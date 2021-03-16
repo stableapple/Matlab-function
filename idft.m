@@ -1,10 +1,18 @@
-function Xn = idft(xk)
+function Xn = idft(xk,N)
   L=length(xk);
-   ixk=zeros(1,L);
-  for n=0:L-1
-    for k=0:L-1
-        ixk(n+1)=ixk(n+1)+(xk(k+1)*exp(i*2*pi*k*n/L));
-    end
+  if(N>L)
+   x1=[xk zeros(1,N-L)];
+  else
+    x1=xk;
+  endif
+   
+for n = 0:N-1
+x(n+1) = 0;
+for k = 0:N-1
+    x(n+1) = x(n+1)+(1/N)*xk(k+1)*exp(1i*2*pi*(k)*(n)/N);
 end
-Xn=ixk./L;
-
+end
+x2=abs(x);
+disp(x2)
+stem(x2)
+ylabel("X(n)");xlabel("n");

@@ -1,0 +1,9 @@
+function [y] = linearconv(x,h)
+  N1= length(x);
+  N2= length(h);
+  xpad= [x zeros(1,N2-1)];
+  hpad = [h zeros(1,N1-1)];
+  X=fft(xpad);
+  H=fft(hpad);
+  Y=X.*H;
+  y=ifft(Y);

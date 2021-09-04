@@ -1,0 +1,25 @@
+bits=[1 0 1 1 0 0 0 0 1 1 1 1 0 1];
+t=0:1:length(bits)-1;
+lastbit=1;
+for j = 0:length(bits)-1
+  if bits(j+1) == 1
+    res(j+1)=-lastbit;
+    lastbit=-lastbit;
+  else
+    res(j+1) = lastbit;
+  end
+end
+i=1;
+t=0:0.01:length(bits);
+for j=1:length(t)
+  if t(j)<=i
+    y(j)=res(i);
+    
+  else
+     y(j)=res(i);
+    i=i+1;
+  end
+end
+plot(t,y)
+axis([0 16 -2 2])
+xlabel('n');ylabel('y(t)');title('polar NRZ-I');
